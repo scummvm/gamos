@@ -1371,9 +1371,9 @@ void GamosEngine::FUN_0040283c(int id, int pos, const byte *data) {
 		Unknown1 &unk1 = _thing2[ oid ];
 		uint8 index = rndRange16( unk1.field_1[0] );
 		if (!unk1.field_2.empty()) {
-			byte id = td[1];
+			byte id1 = td[1];
 			td[1] = unk1.field_2[ unk1.field_1[ index + 1 ] ];
-			preprocessData(8 + (id >> 4), td);
+			preprocessData(8 + (id1 >> 4), td);
 		}
 	}
 
@@ -2153,7 +2153,6 @@ void GamosEngine::FUN_004095a0(Object *obj) {
 void GamosEngine::FUN_004023d8(Object *obj) {
 	if (obj->fld_2 & 0x200) {
 		obj->fld_2 &= ~0x200;
-		int32 index = obj->index;
 		for (int index = obj->index; index < _drawElements.size(); index++) {
 			Object *pobj = &_drawElements[index];
 			if ((pobj->flags & 0xe3) == 0xe1 && ((pobj->blk << 8) | pobj->pos) == obj->index)
