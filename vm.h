@@ -26,7 +26,7 @@
 
 namespace Gamos {
 
-class Sprite;
+struct Sprite;
 
 class VM {
 public:
@@ -103,7 +103,7 @@ public:
         byte ref = REF_UNK;
     };
 
-    typedef void (* CallDispatcher)(void *object, VM *state, uint32 funcID); 
+    typedef void (* CallDispatcher)(void *object, VM *state, uint32 funcID);
 
     struct MemoryBlock {
         uint32 address = 0;
