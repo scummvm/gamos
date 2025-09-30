@@ -1634,7 +1634,7 @@ bool GamosEngine::FUN_00402fb4()
 						bool tmp = false;
 						for (int i = 0; i < 8; i++) {
 							if ((PTR_00417214->unk1 >> 8) & (1 << i)) {
-								//DAT_004173ec = (i & 3) + ivr8;
+								//DAT_004173ec = ((i & 3) + ivr8) & 3;
 								int fncid = ((i & 3) + ivr8) & 3;
 								if (i > 3)
 									fncid += 4;
@@ -1726,7 +1726,7 @@ bool GamosEngine::FUN_00402f34(bool p1, bool p2, Object *obj) {
 		
 		addDirtRectOnObject(obj);
 	}
-	return 0;
+	return false;
 }
 
 void GamosEngine::FUN_0040921c(Object *obj) {
@@ -2260,6 +2260,17 @@ void GamosEngine::setCursor(int id, bool dirtRect) {
 	}
 }
 
+
+bool GamosEngine::FUN_00409600(Object *obj, Common::Point pos) {
+	if (obj->y == -1)
+		return false;
+	
+	Object &robj = _drawElements[obj->y];
+	if (Common::Rect(robj.x, robj.y, robj.x + robj.pImg->image->surface.w, robj.y + robj.pImg->image->surface.h).contains(pos))
+		return true;
+	return false;
+}
+
 void GamosEngine::FUN_00402c2c(Common::Point move, Common::Point actPos, uint8 act2, uint8 act1) {
 	uint8 tmpb = 0;
 	if (act2 == ACT2_8f)
@@ -2335,11 +2346,13 @@ void GamosEngine::FUN_00402c2c(Common::Point move, Common::Point actPos, uint8 a
 		DAT_004173f8 = DAT_004173f0;
 	} else {
 		if (act2 == ACT2_81)
-			DAT_004177fe = 14;
-		DAT_00417805 = 14;
+			DAT_004177fe = ACT_NONE;
+		DAT_00417805 = ACT_NONE;
 	}
 
 }
+
+
 
 void GamosEngine::FUN_00404fcc(int32 id) {
 	printf("Not implemented FUN_00404fcc\n");
@@ -2362,15 +2375,6 @@ bool GamosEngine::FUN_00402bc4() {
 	return true;
 }
 
-bool GamosEngine::FUN_00409600(Object *obj, Common::Point pos) {
-	if (obj->y == -1)
-		return false;
-	
-	Object &robj = _drawElements[obj->y];
-	if (Common::Rect(robj.x, robj.y, robj.x + robj.pImg->image->surface.w, robj.y + robj.pImg->image->surface.h).contains(pos))
-		return true;
-	return false;
-}
 
 
 } // End of namespace Gamos
