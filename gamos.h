@@ -166,11 +166,11 @@ struct Object {
 
 	/* 80 - drawable
 	   40 -
-	   20 - 
+	   20 -
 	   10 -
 	   8 - has storage
-	   4 - 
-	   2 - 
+	   4 -
+	   2 -
 	   1 - used */
 	uint8 flags = 0;
 	uint8 actID = 0;
@@ -194,11 +194,11 @@ private:
 	const ADGameDescription *_gameDescription;
 	Common::RandomSource _randomSource;
 
-	bool _errSet = false;;
+	bool _errSet = false;
 	Common::String _errMessage;
 
 	Archive _arch;
-	
+
 	byte _cmdByte;
 
 	bool _runReadDataMod;
@@ -307,9 +307,9 @@ private:
 	uint8 BYTE_004177f6 = 0;
 	uint8 BYTE_004177fc = 0;
 	bool DAT_004177ff = false;
-	
 
-	byte *PTR_004173e8 = nullptr;	
+
+	byte *PTR_004173e8 = nullptr;
 
 	int32 DAT_00417220 = 0;
 	int32 DAT_00417224 = 0;
@@ -339,7 +339,7 @@ private:
 
 private:
 	static const uint16 _winkeyMap[256];
-	
+
 protected:
 	// Engine APIs
 	Common::Error run() override;
@@ -461,7 +461,7 @@ protected:
 	void vmCallDispatcher(VM *vm, uint32 funcID);
 
 	static void callbackVMCallDispatcher(void *engine, VM *vm, uint32 funcID);
-	
+
 public:
 
 	inline void rndSeed(uint32 seed) {
