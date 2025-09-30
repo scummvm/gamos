@@ -457,7 +457,9 @@ protected:
 		_vm._interrupt = true;
 	};
 
-	static uint32 vmCallDispatcher(void *engine, VM *vm, uint32 funcID);
+	void vmCallDispatcher(VM *vm, uint32 funcID);
+
+	static void callbackVMCallDispatcher(void *engine, VM *vm, uint32 funcID);
 	
 public:
 
