@@ -2056,7 +2056,7 @@ void GamosEngine::vmCallDispatcher(VM *vm, uint32 funcID) {
 		}
 		vm->EAX.val = 1;
 	} break;
-	
+
 	case 30: {
 		if (PTR_00417218->y != -1) {
 			Object *obj = &_drawElements[PTR_00417218->y];
@@ -2071,12 +2071,12 @@ void GamosEngine::vmCallDispatcher(VM *vm, uint32 funcID) {
 		setCursor(arg1, true);
 		vm->EAX.val = 1;
 		break;
-	
+
 	case 32:
 		setCursor(0, false);
 		vm->EAX.val = 1;
 		break;
-	
+
 	case 33:
 		PTR_00417218->fld_5 = _thing1Count - PTR_00417218->blk;
 		vm->EAX.val = 1;
@@ -2339,7 +2339,7 @@ void GamosEngine::setCursor(int id, bool dirtRect) {
 bool GamosEngine::FUN_00409600(Object *obj, Common::Point pos) {
 	if (obj->y == -1)
 		return false;
-	
+
 	Object &robj = _drawElements[obj->y];
 	if (Common::Rect(robj.x, robj.y, robj.x + robj.pImg->image->surface.w, robj.y + robj.pImg->image->surface.h).contains(pos))
 		return true;
