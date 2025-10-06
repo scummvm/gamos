@@ -470,6 +470,9 @@ protected:
 
 	void vmCallDispatcher(VM *vm, uint32 funcID);
 
+
+	void dumpActions();
+
 	static void callbackVMCallDispatcher(void *engine, VM *vm, uint32 funcID);
 
 public:
